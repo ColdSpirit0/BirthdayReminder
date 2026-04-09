@@ -42,5 +42,10 @@ namespace BirthdayReminder.Models
 
         public TimeSpan DaysToBirthday => new TimeSpan();
 
+        public override string ToString()
+        {
+            return $"Name: {Name}, Birthday: {BirthdayDate}";
+        }
+
     }
 }

@@ -11,6 +11,8 @@ namespace BirthdayReminder;
 
 public partial class App : Application
 {
+    private WindowController _windowController;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -20,10 +22,13 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
+            _windowController = new WindowController();
             desktop.MainWindow = new MainWindow
             {
                 DataContext = new MainWindowViewModel(),
             };
+
+
         }
 
         base.OnFrameworkInitializationCompleted();

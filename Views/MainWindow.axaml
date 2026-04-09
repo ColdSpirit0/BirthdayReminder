@@ -23,12 +23,15 @@
         <Grid ColumnSpacing="10" Grid.Row="0" ColumnDefinitions="auto,auto,auto,*,auto">
             <Button Grid.Column="0" Width="100" Content="Add" Command="{Binding OpenEditWindowCommand}"/>
             <Button Grid.Column="1" Width="100" Content="Edit" Command="{Binding OpenEditWindowCommand}"/>
-            <Button Grid.Column="2" Width="100" Content="Remove"/>
+            <Button Grid.Column="2" Width="100" Content="Remove" 
+                    Command="{Binding RemoveRecordCommand}" 
+                    CommandParameter="{Binding SelectedRecord}"/>
             <Button Grid.Column="4" Width="100" Content="Settings"/>
         </Grid>
         <DataGrid
             Grid.Row="1" 
             ItemsSource="{Binding Records}"
+            SelectedItem="{Binding SelectedRecord}"
             AutoGenerateColumns="True" 
             IsReadOnly="True" 
             GridLinesVisibility="All"  

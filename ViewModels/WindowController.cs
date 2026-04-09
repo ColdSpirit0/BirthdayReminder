@@ -12,9 +12,9 @@ namespace BirthdayReminder.ViewModels
 
         public EditRecordWindow EditRecordWindow => _editRecordWindow;
 
-        public WindowController()
+  /*      public WindowController()
         {
             _editRecordWindow = new EditRecordWindow();
-        }
+        }*/
     }
 }

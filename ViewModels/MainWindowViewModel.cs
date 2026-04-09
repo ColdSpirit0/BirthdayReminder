@@ -1,8 +1,12 @@
+using BirthdayReminder.Messages;
 using BirthdayReminder.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace BirthdayReminder.ViewModels
 {
@@ -13,29 +17,26 @@ namespace BirthdayReminder.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<BirthdayRecordWrap> _records = new();
-                
-        //private ObservableCollection<BirthdayRecordWrap> _selectedRecords = new();
 
-        [ObservableProperty]
-        public int _counter = 0;
-
-        //public BirthdayRecordWrap? SelectedRecord { get; set; }
+        public BirthdayRecordWrap? SelectedRecord { get; set; }
 
         [RelayCommand]
-        public void Increment()
+        public async Task OpenEditWindow()
         {
-            Counter++;
+            Console.WriteLine(SelectedRecord);
+
+            //var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(new BirthdayRecord { Name = "Dale" }));
         }
 
         [RelayCommand]
-        public void OpenEditWindow()
+        public void RemoveRecord(BirthdayRecordWrap record)
         {
-            Console.WriteLine("EDIT WINDOW");
+            _records.Remove(record);
         }
 
         public MainWindowViewModel()
         {
-                       
+
             _records =
             [
                 new BirthdayRecordWrap(new BirthdayRecord { Name = "FFG", BirthdayDate = new DateTime() }),

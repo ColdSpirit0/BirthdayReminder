@@ -1,4 +1,5 @@
 using BirthdayReminder.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace BirthdayReminder.ViewModels
 {
-    internal class EditorWindowViewModel:ViewModelBase
+    internal partial class EditorWindowViewModel:ViewModelBase
     {
-        private BirthdayRecord _record;
+        [ObservableProperty]
+        private BirthdayRecordWrap _record;
 
-
+        public EditorWindowViewModel(BirthdayRecord record)
+        {
+            Record = new BirthdayRecordWrap(record);
+        }
     }
 }
