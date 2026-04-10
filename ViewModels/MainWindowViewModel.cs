@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -12,35 +11,44 @@ namespace BirthdayReminder.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-
-        public string Greeting { get; } = "Welcome to Avalonia!";
+        public ObservableCollection<BirthdayRecordWrap> Records { get; private set; } = new();
 
         [ObservableProperty]
-        private ObservableCollection<BirthdayRecordWrap> _records = new();
-
-        public BirthdayRecordWrap? SelectedRecord { get; set; }
+        public BirthdayRecordWrap? _selectedRecord;
 
         [RelayCommand]
-        public async Task OpenEditWindow()
+        public async Task EditRecord()
         {
-            Console.WriteLine(SelectedRecord);
+            if (SelectedRecord == null) return;
+            var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(new BirthdayRecord(SelectedRecord.Record)));
+            Console.WriteLine(responce?.Name);
 
-            //var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(new BirthdayRecord { Name = "Dale" }));
+            if (responce != null) SelectedRecord.Record = new BirthdayRecord(responce);
+        }
+
+        [RelayCommand]
+        public async Task AddRecord()
+        {
+            var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(null));
+            Console.WriteLine(responce?.Name);
+
+            if (responce != null) Records.Add(new BirthdayRecordWrap(new BirthdayRecord(responce)));
         }
 
         [RelayCommand]
         public void RemoveRecord(BirthdayRecordWrap record)
         {
-            _records.Remove(record);
+            Records.Remove(record);
         }
 
         public MainWindowViewModel()
         {
 
-            _records =
+            Records =
             [
-                new BirthdayRecordWrap(new BirthdayRecord { Name = "FFG", BirthdayDate = new DateTime() }),
-                new BirthdayRecordWrap(new BirthdayRecord { Name = "Boba", BirthdayDate = new DateTime() }),
+                new BirthdayRecordWrap(new BirthdayRecord { Name = "Frank", BirthdayDate = new DateTime() }),
+                new BirthdayRecordWrap(new BirthdayRecord { Name = "Boba", BirthdayDate = DateTime.Now }),
+                new BirthdayRecordWrap(new BirthdayRecord { Name = "Rita", BirthdayDate = new DateTime() }),
             ];
         }
     }

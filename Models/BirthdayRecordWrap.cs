@@ -42,6 +42,20 @@ namespace BirthdayReminder.Models
 
         public TimeSpan DaysToBirthday => new TimeSpan();
 
+        public BirthdayRecord Record
+        {
+            get => _record;
+            set
+            {    
+                _record = value;
+                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(BirthdayDate));
+                OnPropertyChanged(nameof(DaysToBirthday));
+                //Name = value.Name;
+                //BirthdayDate = value.BirthdayDate;
+            }
+        }
+
         public override string ToString()
         {
             return $"Name: {Name}, Birthday: {BirthdayDate}";

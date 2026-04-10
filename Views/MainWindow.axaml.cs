@@ -16,12 +16,11 @@ namespace BirthdayReminder.Views
             if (Design.IsDesignMode) return;
 
             WeakReferenceMessenger.Default.Register<MainWindow, EditRecordMessage>(this, static (w, m) =>
-            {
-                Console.WriteLine("Edit");
+            {                
                 var editorWindow = new EditRecordWindow();
                 editorWindow.DataContext = new EditorWindowViewModel(m.record);
-                editorWindow.ShowDialog<BirthdayRecord>(w);
-                m.Reply(new Models.BirthdayRecord { Name ="P"});
+                var record = editorWindow.ShowDialog<BirthdayRecord?>(w);
+                m.Reply(record);
             });
         }
     }

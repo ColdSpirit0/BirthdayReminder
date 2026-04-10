@@ -16,8 +16,8 @@
 			<CalendarDatePicker Grid.Row="1" Grid.Column="1"/>
 		</Grid>
 		<StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" >
-			<Button Content="Save"/>
-			<Button Content="Cancel"/>
+			<Button Content="Save" Command="{Binding SaveCommand}"/>
+			<Button Content="Cancel" Command="{Binding CancelCommand}"/>
 		</StackPanel>
 	</DockPanel>
 </Window>

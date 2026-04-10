@@ -21,8 +21,8 @@
         </Grid.RowDefinitions>
 
         <Grid ColumnSpacing="10" Grid.Row="0" ColumnDefinitions="auto,auto,auto,*,auto">
-            <Button Grid.Column="0" Width="100" Content="Add" Command="{Binding OpenEditWindowCommand}"/>
-            <Button Grid.Column="1" Width="100" Content="Edit" Command="{Binding OpenEditWindowCommand}"/>
+            <Button Grid.Column="0" Width="100" Content="Add" Command="{Binding AddRecordCommand}"/>
+            <Button Grid.Column="1" Width="100" Content="Edit" Command="{Binding EditRecordCommand}"/>
             <Button Grid.Column="2" Width="100" Content="Remove" 
                     Command="{Binding RemoveRecordCommand}" 
                     CommandParameter="{Binding SelectedRecord}"/>
