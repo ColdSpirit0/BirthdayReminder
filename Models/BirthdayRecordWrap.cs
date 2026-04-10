@@ -42,6 +42,8 @@ namespace BirthdayReminder.Models
 
         public TimeSpan DaysToBirthday => new TimeSpan();
 
+        public int Age => 20;
+
         public BirthdayRecord Record
         {
             get => _record;

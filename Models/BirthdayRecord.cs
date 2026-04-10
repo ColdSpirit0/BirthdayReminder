@@ -5,7 +5,7 @@ namespace BirthdayReminder.Models
     public class BirthdayRecord
     {
         public string? Name;
-        public DateTime BirthdayDate;
+        public DateTime BirthdayDate = DateTime.Today;
 
         public BirthdayRecord(BirthdayRecord record)
         {

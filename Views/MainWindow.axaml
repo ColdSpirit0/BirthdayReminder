@@ -1,42 +1,48 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:BirthdayReminder.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="BirthdayReminder.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="BirthdayReminder" Padding="10" Width="800" Height="450">
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="using:BirthdayReminder.ViewModels"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+		x:Class="BirthdayReminder.Views.MainWindow"
+		x:DataType="vm:MainWindowViewModel"
+		Icon="/Assets/avalonia-logo.ico"
+		Title="BirthdayReminder" Padding="10" Width="800" Height="450">
 
-    <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
-    </Design.DataContext>
-    <Grid RowSpacing="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>          
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+		to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+	<Grid RowSpacing="10">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <Grid ColumnSpacing="10" Grid.Row="0" ColumnDefinitions="auto,auto,auto,*,auto">
-            <Button Grid.Column="0" Width="100" Content="Add" Command="{Binding AddRecordCommand}"/>
-            <Button Grid.Column="1" Width="100" Content="Edit" Command="{Binding EditRecordCommand}"/>
-            <Button Grid.Column="2" Width="100" Content="Remove" 
-                    Command="{Binding RemoveRecordCommand}" 
-                    CommandParameter="{Binding SelectedRecord}"/>
-            <Button Grid.Column="4" Width="100" Content="Settings"/>
-        </Grid>
-        <DataGrid
-            Grid.Row="1" 
-            ItemsSource="{Binding Records}"
-            SelectedItem="{Binding SelectedRecord}"
-            AutoGenerateColumns="True" 
-            IsReadOnly="True" 
-            GridLinesVisibility="All"  
-            BorderThickness="1" 
-            BorderBrush="Gray">		
-        </DataGrid>	
-    </Grid>
+		<Grid ColumnSpacing="10" Grid.Row="0" ColumnDefinitions="auto,auto,auto,*,auto">
+			<Button Grid.Column="0" Width="100" Content="Add" Command="{Binding AddRecordCommand}"/>
+			<Button Grid.Column="1" Width="100" Content="Edit" Command="{Binding EditRecordCommand}"/>
+			<Button Grid.Column="2" Width="100" Content="Remove"
+					Command="{Binding RemoveRecordCommand}"
+					CommandParameter="{Binding SelectedRecord}"/>
+			<Button Grid.Column="4" Width="100" Content="Settings"/>
+		</Grid>
+		<DataGrid
+		Grid.Row="1"
+		ItemsSource="{Binding Records}"
+		SelectedItem="{Binding SelectedRecord}"
+		AutoGenerateColumns="False"
+		IsReadOnly="True"
+		GridLinesVisibility="All"
+		BorderThickness="1"
+		BorderBrush="Gray">
+		<DataGrid.Columns>
+			<DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
+			<DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayDate}"/>
+			<DataGridTextColumn Header="Days To Birthday" Binding="{Binding DaysToBirthday}"/>
+			<DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+		</DataGrid.Columns>
+		</DataGrid>
+</Grid>
 </Window>
