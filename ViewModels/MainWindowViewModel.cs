@@ -21,18 +21,18 @@ namespace BirthdayReminder.ViewModels
         {
             if (SelectedRecord == null) return;
             var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(new BirthdayRecord(SelectedRecord.Record)));
-            Console.WriteLine(responce?.Name);
+            Console.WriteLine(responce.Name);
 
-            if (responce != null) SelectedRecord.Record = new BirthdayRecord(responce);
+            if (!responce.IsInvalid) SelectedRecord.Record = new BirthdayRecord(responce);
         }
 
         [RelayCommand]
         public async Task AddRecord()
         {
-            var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(null));
-            Console.WriteLine(responce?.Name);
+            var responce = await WeakReferenceMessenger.Default.Send(new EditRecordMessage(new BirthdayRecord()));
+            Console.WriteLine(responce.Name);
 
-            if (responce != null) Records.Add(new BirthdayRecordWrap(new BirthdayRecord(responce)));
+            if (!responce.IsInvalid) Records.Add(new BirthdayRecordWrap(new BirthdayRecord(responce)));
         }
 
         [RelayCommand]

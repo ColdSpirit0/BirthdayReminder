@@ -12,14 +12,15 @@ namespace BirthdayReminder.Models
             _record = record;
         }
 
-        public string Name
+        public string? Name
         {
             get => _record.Name;
             set
             {
                 if (_record.Name != value)
                 {
-                    _record.Name = value;
+                    var newRecord = new BirthdayRecord { Name = value, BirthdayDate= _record.BirthdayDate };
+                    _record = newRecord;
                     OnPropertyChanged(nameof(Name));
                 }
             }
@@ -32,7 +33,8 @@ namespace BirthdayReminder.Models
             {
                 if (_record.BirthdayDate != value)
                 {
-                    _record.BirthdayDate = value;
+                    var newRecord = new BirthdayRecord { Name = _record.Name, BirthdayDate = value };
+                    _record = newRecord;
                     OnPropertyChanged(nameof(BirthdayDate));
                     OnPropertyChanged(nameof(DaysToBirthday));
                 }

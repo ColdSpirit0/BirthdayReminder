@@ -11,16 +11,9 @@ namespace BirthdayReminder.ViewModels
         [ObservableProperty]
         private BirthdayRecordWrap _record;
 
-        public EditorWindowViewModel(BirthdayRecord? record)
+        public EditorWindowViewModel(BirthdayRecord record)
         {
-            if (record != null)
-            {
-                Record = new BirthdayRecordWrap(record);
-            }
-            else
-            {
-                Record = new BirthdayRecordWrap(new BirthdayRecord { Name = "" });
-            }
+            Record = new BirthdayRecordWrap(record);
         }
 
         [RelayCommand]

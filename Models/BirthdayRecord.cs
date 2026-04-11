@@ -2,7 +2,7 @@ using System;
 
 namespace BirthdayReminder.Models
 {
-    public class BirthdayRecord
+    public struct BirthdayRecord
     {
         public string? Name;
         public DateTime BirthdayDate = DateTime.Today;
@@ -17,5 +17,7 @@ namespace BirthdayReminder.Models
         {
             
         }
+
+        public bool IsInvalid => Name == null;
     }
 }

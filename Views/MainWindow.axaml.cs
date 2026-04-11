@@ -19,7 +19,7 @@ namespace BirthdayReminder.Views
             {                
                 var editorWindow = new EditRecordWindow();
                 editorWindow.DataContext = new EditorWindowViewModel(m.record);
-                var record = editorWindow.ShowDialog<BirthdayRecord?>(w);
+                var record = editorWindow.ShowDialog<BirthdayRecord>(w);
                 m.Reply(record);
             });
         }
