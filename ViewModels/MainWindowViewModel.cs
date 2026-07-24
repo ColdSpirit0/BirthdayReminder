@@ -46,9 +46,9 @@ namespace BirthdayReminder.ViewModels
 
             Records =
             [
-                new BirthdayRecordWrap(new BirthdayRecord { Name = "Frank", BirthdayDate = new DateTime() }),
-                new BirthdayRecordWrap(new BirthdayRecord { Name = "Boba", BirthdayDate = DateTime.Now }),
-                new BirthdayRecordWrap(new BirthdayRecord { Name = "Rita", BirthdayDate = new DateTime() }),
+                new BirthdayRecordWrap(new BirthdayRecord { Name = "Frank", BirthdayDate = new DateTime(1998, 3, 20) }),
+                new BirthdayRecordWrap(new BirthdayRecord { Name = "Boba", BirthdayDate = new DateTime(2002, 7, 23) }),
+                new BirthdayRecordWrap(new BirthdayRecord { Name = "Rita", BirthdayDate = new DateTime(1989, 7,25) }),
             ];
         }
     }

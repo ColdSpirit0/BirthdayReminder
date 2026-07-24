@@ -36,19 +36,47 @@ namespace BirthdayReminder.Models
                     OnPropertyChanged(nameof(BirthdayDate));
                     OnPropertyChanged(nameof(DaysToBirthday));
                 }
-
             }
-        }      
+        }
 
-        public TimeSpan DaysToBirthday => new TimeSpan();
+        public int DaysToBirthday
+        {
+            get
+            {
+                var now = DateTime.Today;
+                var birthdayDate = new DateTime(now.Year, BirthdayDate.Month, BirthdayDate.Day);
 
-        public int Age => 20;
+                if (birthdayDate < now)
+                {
+                    birthdayDate = new DateTime(birthdayDate.Year + 1, BirthdayDate.Month, BirthdayDate.Day);
+                }
+
+                return (birthdayDate - now).Days;
+            }
+        }
+
+        public int Age
+        {
+            get
+            {
+                var now = DateTime.Today;
+                var yearsOld = now.Year - BirthdayDate.Year;
+                var birthdayDate = new DateTime(now.Year, BirthdayDate.Month, BirthdayDate.Day);
+
+                if (birthdayDate < now)
+                {
+                    yearsOld++;
+                }
+
+                return yearsOld;
+            }
+        }
 
         public BirthdayRecord Record
         {
             get => _record;
             set
-            {    
+            {
                 _record = value;
                 OnPropertyChanged(nameof(Name));
                 OnPropertyChanged(nameof(BirthdayDate));

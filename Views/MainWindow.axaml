@@ -29,20 +29,20 @@
 			<Button Grid.Column="4" Width="100" Content="Settings"/>
 		</Grid>
 		<DataGrid
-		Grid.Row="1"
-		ItemsSource="{Binding Records}"
-		SelectedItem="{Binding SelectedRecord}"
-		AutoGenerateColumns="False"
-		IsReadOnly="True"
-		GridLinesVisibility="All"
-		BorderThickness="1"
-		BorderBrush="Gray">
-		<DataGrid.Columns>
-			<DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
-			<DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayDate}"/>
-			<DataGridTextColumn Header="Days To Birthday" Binding="{Binding DaysToBirthday}"/>
-			<DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
-		</DataGrid.Columns>
+			Grid.Row="1"
+			ItemsSource="{Binding Records}"
+			SelectedItem="{Binding SelectedRecord}"
+			AutoGenerateColumns="False"
+			IsReadOnly="True"
+			GridLinesVisibility="All"
+			BorderThickness="1"
+			BorderBrush="Gray">
+			<DataGrid.Columns>
+				<DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
+				<DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayDate}"/>
+				<DataGridTextColumn Header="Days To Birthday" Binding="{Binding DaysToBirthday}"/>
+				<DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+			</DataGrid.Columns>
 		</DataGrid>
-</Grid>
+	</Grid>
 </Window>
