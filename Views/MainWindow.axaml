@@ -39,7 +39,7 @@
 			BorderBrush="Gray">
 			<DataGrid.Columns>
 				<DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
-				<DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayDate}"/>
+				<DataGridTextColumn Header="Birthday" Binding="{Binding BirthdayDate, StringFormat=\{0:dd.MM.yyyy\}}"/>
 				<DataGridTextColumn Header="Days To Birthday" Binding="{Binding DaysToBirthday}"/>
 				<DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
 			</DataGrid.Columns>
