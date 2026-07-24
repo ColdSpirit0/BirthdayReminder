@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build Avalonia project",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["build"],
+      "problemMatcher": "$msCompile",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "run Avalonia project",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["run"],
+      "problemMatcher": [],
+      "group": "test"
+    }
+  ]
+}
