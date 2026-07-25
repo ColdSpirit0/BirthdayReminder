@@ -35,6 +35,7 @@ namespace BirthdayReminder.Models
                     _record.BirthdayDate = value;
                     OnPropertyChanged(nameof(BirthdayDate));
                     OnPropertyChanged(nameof(DaysToBirthday));
+                    OnPropertyChanged(nameof(Age));
                 }
             }
         }
@@ -59,6 +60,7 @@ namespace BirthdayReminder.Models
         {
             get
             {
+                Console.WriteLine("Age");
                 var now = DateTime.Today;
                 var yearsOld = now.Year - BirthdayDate.Year;
                 var birthdayDate = new DateTime(now.Year, BirthdayDate.Month, BirthdayDate.Day);
@@ -81,8 +83,7 @@ namespace BirthdayReminder.Models
                 OnPropertyChanged(nameof(Name));
                 OnPropertyChanged(nameof(BirthdayDate));
                 OnPropertyChanged(nameof(DaysToBirthday));
-                //Name = value.Name;
-                //BirthdayDate = value.BirthdayDate;
+                OnPropertyChanged(nameof(Age));
             }
         }
 
