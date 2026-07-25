@@ -60,14 +60,13 @@ namespace BirthdayReminder.Models
         {
             get
             {
-                Console.WriteLine("Age");
                 var now = DateTime.Today;
                 var yearsOld = now.Year - BirthdayDate.Year;
                 var birthdayDate = new DateTime(now.Year, BirthdayDate.Month, BirthdayDate.Day);
 
-                if (birthdayDate < now)
+                if (birthdayDate > now)
                 {
-                    yearsOld++;
+                    yearsOld--;
                 }
 
                 return yearsOld;
