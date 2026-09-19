@@ -36,6 +36,7 @@
 			IsReadOnly="True"
 			GridLinesVisibility="All"
 			BorderThickness="1"
+			x:Name="DataTable"
 			BorderBrush="Gray">
 			<DataGrid.Columns>
 				<DataGridTextColumn Width="*" Header="Name" Binding="{Binding Name}"/>
