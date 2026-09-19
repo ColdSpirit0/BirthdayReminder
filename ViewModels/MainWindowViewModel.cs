@@ -1,3 +1,4 @@
+using Avalonia.Collections;
 using BirthdayReminder.Messages;
 using BirthdayReminder.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -17,6 +18,20 @@ namespace BirthdayReminder.ViewModels
 
         [ObservableProperty]
         public BirthdayRecordWrap? _selectedRecord;
+
+        public MainWindowViewModel()
+        {
+
+            // Records =
+            // [
+            //     new BirthdayRecordWrap(new BirthdayRecord { Name = "Frank", BirthdayDate = new DateTime(1998, 3, 20) }),
+            //     new BirthdayRecordWrap(new BirthdayRecord { Name = "Boba", BirthdayDate = new DateTime(2002, 7, 23) }),
+            //     new BirthdayRecordWrap(new BirthdayRecord { Name = "Rita", BirthdayDate = new DateTime(1989, 7,25) }),
+            // ];
+
+            _dataProvider = new CsvDataProvider();
+            Records = new ObservableCollection<BirthdayRecordWrap>(_dataProvider.Load().Select(r => new BirthdayRecordWrap(r)));                       
+        }
 
         [RelayCommand]
         public async Task EditRecord()
@@ -51,20 +66,6 @@ namespace BirthdayReminder.ViewModels
         {
             Records.Remove(record);
             SaveChanges();
-        }
-
-        public MainWindowViewModel()
-        {
-
-            // Records =
-            // [
-            //     new BirthdayRecordWrap(new BirthdayRecord { Name = "Frank", BirthdayDate = new DateTime(1998, 3, 20) }),
-            //     new BirthdayRecordWrap(new BirthdayRecord { Name = "Boba", BirthdayDate = new DateTime(2002, 7, 23) }),
-            //     new BirthdayRecordWrap(new BirthdayRecord { Name = "Rita", BirthdayDate = new DateTime(1989, 7,25) }),
-            // ];
-
-            _dataProvider = new CsvDataProvider();
-            Records = new ObservableCollection<BirthdayRecordWrap>(_dataProvider.Load().Select(r => new BirthdayRecordWrap(r)));
         }
 
         private void SaveChanges()
